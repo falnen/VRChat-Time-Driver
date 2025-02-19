@@ -44,7 +44,6 @@ def Main_Window():
     root.iconbitmap(r"o:\Tools\Python\Icon1.ico")
     
     sv_ttk.set_theme("dark")
-    style = ttk.Style()
 
     varf = tk.BooleanVar()
     vart = tk.BooleanVar()
@@ -56,12 +55,8 @@ def Main_Window():
     varm.set('OSCMinute')
     vars.set('OSCSecond')
 
-    style.configure('TLabel',background ='#1f1f1f',foreground='#ffffff')
-
     time_label = ttk.Label(root, anchor='n', text="Time: --:--:--", font=("Arial", 12),padding=10)
     time_label.grid(row=0, column=0, sticky='nsew')
-
-    style.configure('TRadiobutton',background ='#1f1f1f',foreground='#ffffff')
 
     time_format12 = ttk.Radiobutton(root,variable=varf,value=0,text='12hr')
     time_format24 = ttk.Radiobutton(root,variable=varf,value=1,text='24hr')
@@ -72,9 +67,6 @@ def Main_Window():
     time_typei = ttk.Radiobutton(root,variable=vart,value=1,text='int')
     time_typef.grid(row=0,column=0,sticky='sw',padx=(30,0),pady=(0,35))
     time_typei.grid(row=0,column=0,sticky='sw',padx=(30,0),pady=(0,5))
-
-    style.configure('TLabelframe',background='#1f1f1f',relief='flat',borderwidth=0,bordercolor='#1f1f1f')
-    style.configure('TLabelframe.Label',background='#1f1f1f',foreground='#ffffff')
 
     paramnames = ttk.Labelframe(root,text='Parameter Names',labelanchor='n',padding=2)
     paramnames.grid(row=0,column=0,sticky='new',pady=(35,0),padx=5)
