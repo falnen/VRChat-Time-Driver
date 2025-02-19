@@ -8,9 +8,6 @@ ip = "127.0.0.1"
 sendPort = 9000
 client = udp_client.SimpleUDPClient(ip, sendPort)
 
-root = None
-time_label = None
-
 def send_time(root, time_label, varf, vart, varh, varm, vars):
     now = datetime.now()
     time_format = varf.get()
@@ -61,7 +58,7 @@ def Main_Window():
 
     style.configure('TLabel',background ='#1f1f1f',foreground='#ffffff')
 
-    time_label = ttk.Label(root, anchor='n', text="watch time: --:--:--", font=("Arial", 12),padding=10)
+    time_label = ttk.Label(root, anchor='n', text="Time: --:--:--", font=("Arial", 12),padding=10)
     time_label.grid(row=0, column=0, sticky='nsew')
 
     style.configure('TRadiobutton',background ='#1f1f1f',foreground='#ffffff')
