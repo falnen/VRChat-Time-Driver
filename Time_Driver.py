@@ -44,7 +44,8 @@ def Main_Window():
     root.maxsize(300, 210)
     root.columnconfigure(0, weight=1)
     root.rowconfigure(0, weight=1)
-
+    root.iconbitmap(r"o:\Tools\Python\Icon1.ico")
+    
     sv_ttk.set_theme("dark")
     style = ttk.Style()
 
