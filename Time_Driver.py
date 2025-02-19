@@ -11,10 +11,10 @@ client = udp_client.SimpleUDPClient(ip, sendPort)
 root = None
 time_label = None
 
-def send_time(root, time_label, var1, var2, varh, varm, vars):
+def send_time(root, time_label, varf, vart, varh, varm, vars):
     now = datetime.now()
-    time_format = var1.get()
-    time_type = var2.get()
+    time_format = varf.get()
+    time_type = vart.get()
     
     if not time_type:
         hour = float(now.hour / 24.0 if time_format else now.hour / 12.0)
@@ -34,7 +34,7 @@ def send_time(root, time_label, var1, var2, varh, varm, vars):
 
     time_label.config(text=f"Time: {time_display}")
 
-    root.after(1000, lambda :send_time(root, time_label, var1, var2, varh, varm, vars))
+    root.after(1000, lambda :send_time(root, time_label, varf, vart, varh, varm, vars))
 
 def Main_Window():
     root = tk.Tk()
@@ -48,8 +48,8 @@ def Main_Window():
     sv_ttk.set_theme("dark")
     style = ttk.Style()
 
-    var1 = tk.BooleanVar()
-    var2 = tk.BooleanVar()
+    varf = tk.BooleanVar()
+    vart = tk.BooleanVar()
     varh = tk.StringVar()
     varm = tk.StringVar()
     vars = tk.StringVar()
@@ -58,8 +58,6 @@ def Main_Window():
     varm.set('OSCMinute')
     vars.set('OSCSecond')
 
-
-    style = ttk.Style()
     style.configure('TLabel',background ='#1f1f1f',foreground='#ffffff')
 
     time_label = ttk.Label(root, anchor='n', text="watch time: --:--:--", font=("Arial", 12),padding=10)
@@ -67,13 +65,13 @@ def Main_Window():
 
     style.configure('TRadiobutton',background ='#1f1f1f',foreground='#ffffff')
 
-    time_format12 = ttk.Radiobutton(root,variable=var1,value=0,text='12hr')
-    time_format24 = ttk.Radiobutton(root,variable=var1,value=1,text='24hr')
+    time_format12 = ttk.Radiobutton(root,variable=varf,value=0,text='12hr')
+    time_format24 = ttk.Radiobutton(root,variable=varf,value=1,text='24hr')
     time_format12.grid(row=0,column=0,sticky='se',padx=(0,30),pady=(0,35))
     time_format24.grid(row=0,column=0,sticky='se',padx=(0,30),pady=(0,5))
 
-    time_typef = ttk.Radiobutton(root,variable=var2,value=0,text='float')
-    time_typei = ttk.Radiobutton(root,variable=var2,value=1,text='int')
+    time_typef = ttk.Radiobutton(root,variable=vart,value=0,text='float')
+    time_typei = ttk.Radiobutton(root,variable=vart,value=1,text='int')
     time_typef.grid(row=0,column=0,sticky='sw',padx=(30,0),pady=(0,35))
     time_typei.grid(row=0,column=0,sticky='sw',padx=(30,0),pady=(0,5))
 
@@ -96,7 +94,7 @@ def Main_Window():
     parametermL.grid(row=1,column=0,sticky='nsw',padx=15)
     parametersL.grid(row=2,column=0,sticky='nsw',padx=15)
     
-    send_time(root, time_label, var1, var2, varh, varm, vars)
+    send_time(root, time_label, varf, vart, varh, varm, vars)
     root.mainloop()
 if __name__ == "__main__":
     Main_Window()
