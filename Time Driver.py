@@ -70,9 +70,9 @@ def send_time():
     minute = now.minute / 60.0 if not time_type else now.minute
     second = now.second / 60.0 if not time_type else now.second
 
-    client.send_message(f"/avatar/parameters/{HourEntry.get()}", hour)
-    client.send_message(f"/avatar/parameters/{MinuteEntry.get()}", minute)
-    client.send_message(f"/avatar/parameters/{SecondEntry.get()}", second)
+    client.send_message(f"/avatar/parameters/{PHour.get()}", hour)
+    client.send_message(f"/avatar/parameters/{PMinute.get()}", minute)
+    client.send_message(f"/avatar/parameters/{PSecond.get()}", second)
 
     time_display = now.strftime("%H:%M:%S") if time_format else now.strftime("%I:%M:%S")
 
