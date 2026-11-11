@@ -4,14 +4,10 @@ import tkinter.ttk as ttk
 from datetime import datetime
 from pythonosc import udp_client
 import sv_ttk
-from tinyoscquery.queryservice import OSCQueryService
-from tinyoscquery.utility import get_open_tcp_port, get_open_udp_port
-
-OSCqs = OSCQueryService('VRCTimeDriver',get_open_tcp_port(),get_open_udp_port())
 
 ip = "127.0.0.1"
 sendPort = 9000
-client = udp_client.SimpleUDPClient(OSCqs.oscIp, OSCqs.oscPort)
+client = udp_client.SimpleUDPClient("127.0.0.1", 9000)
 
 Root = tk.Tk()
 Root.title("Time Driver")
@@ -86,12 +82,6 @@ def send_time():
 
 def onCLose():
     savePnamesToFile(PHour.get(),PMinute.get(),PSecond.get())
-    OSCqs.http_server.shutdown()
-    OSCqs.http_server.server_close()
-    OSCqs.http_thread.join()
-    OSCqs._zeroconf.unregister_all_services()
-    OSCqs._zeroconf.close()
-    OSCqs._zeroconf.unregister_all_services = lambda: None
     Root.destroy()
 
 send_time()
